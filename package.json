@@ -2,16 +2,18 @@
   "name": "chat-app",
   "version": "1.0.0",
   "description": "Real-time chat app with React and Supabase",
-  "scripts": {
-    "start": "webpack serve --mode development",
-    "build": "webpack --mode production",
-    "preview": "serve dist"
-  },
+"scripts": {
+  "start": "webpack serve --mode development",
+  "build": "npx webpack --mode production",
+  "preview": "serve dist"
+},
+
   "dependencies": {
     "@supabase/supabase-js": "^2.55.0",
     "dotenv": "^16.6.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "vercel": "^44.7.3"
   },
   "devDependencies": {
     "@babel/core": "^7.28.0",
@@ -25,5 +27,8 @@
     "webpack": "^5.101.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.2.2"
-  }
+  },
+"engines": {
+  "node": "22.x"
+}
 }
