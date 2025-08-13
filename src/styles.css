@@ -445,3 +445,37 @@ font-size: 13pt;
   width: 100%;
 
 }
+
+.user-name {
+  position: relative;
+  display: inline-block;
+}
+
+.unread-badge {
+  position: absolute;
+  top: 0px; /* Finomabb pozicionálás a vizuális egyensúly érdekében */
+  right: -28px; /* Jobbra tolás, hogy ne legyen túl messze az ikontól */
+  background: linear-gradient(135deg, #ff4d4f, #d9363e); /* Modern piros gradiens */
+  color: #ffffff;
+  font-size: 10px; /* Kicsit kisebb, de olvasható betűméret */
+  font-weight: 600; /* Közepesen vastag betűtípus a letisztultságért */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Modern, rendszerbarát betűtípus */
+  border-radius: 10px; /* Enyhén lekerekített sarkok, nem teljesen kör */
+  padding: 2px 6px; /* Kényelmes belső tér */
+  min-width: 12px; /* Minimális szélesség, hogy ne legyen túl kicsi */
+  height: 16px; /* Kisebbre igazítva, hogy ne legyen tolakodó */
+  line-height: 14px; /* Középre igazított szöveg függőlegesen */
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 0 1px rgba(0, 0, 0, 0.1); /* Finom árnyék a mélységért */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Diszkrét fehér keret a kiemeléshez */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background 0.2s ease; /* Sima animáció hoverhez */
+}
+
+.unread-badge:hover {
+  transform: scale(1.1); /* Finom nagyítás hoverkor */
+  background: linear-gradient(135deg, #ff7875, #e64a45); /* Világosabb gradiens hoverkor */
+}
+
