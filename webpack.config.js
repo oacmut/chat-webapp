@@ -1,3 +1,4 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
@@ -33,6 +34,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
+    new CopyWebpackPlugin({
+  patterns: [
+    { from: 'public', to: '.' } // minden a public-ból a dist gyökerébe megy
+  ]
+}),
+
     new webpack.DefinePlugin({
       'process.env': {
         SUPABASE_URL: JSON.stringify(process.env.SUPABASE_URL),
