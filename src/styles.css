@@ -14,7 +14,21 @@ body {
   display: flex;
   flex-direction: column;
 }
-
+.signout-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #dc2626, #ef4444);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
 .main-container {
   display: flex;
   gap: 15px;
@@ -22,7 +36,60 @@ body {
   position: relative;
   max-height: calc(100vh - 80px); /* Korlátozzuk a magasságot */
 }
+.chat-container {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+}
 
+.chat-container h2 {
+  margin-top: 0;
+  color: #1e40af;
+  font-weight: 600;
+  text-align: left;
+  font-size: 10pt;
+}
+.chat-container p {
+    font-size: 10pt;
+}
+.user-list {
+  width: 300px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+  position: relative;
+}
+.user-list h2 {
+font-size: 13pt;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 700px;
+  padding: 10px;
+  background: #f9fafb;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.message {
+  margin: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  max-width: 70%;
+  position: relative;
+  word-wrap: break-word;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease-in;
+}
 /* Reszponzív dizájn */
 @media (max-width: 768px) {
   .app {
@@ -34,15 +101,18 @@ body {
     gap: 10px;
     max-height: calc(100vh - 20px);
   }
+    .messages {
+    max-height: 500px;
+  }
   .user-list {
-    width: 100%;
-    max-height: 180px;
+    width: 92%;
+    max-height: 220px;
     margin-bottom: 10px;
     padding-top: 50px; /* Több hely a gombnak */
   }
   .chat-container {
-    width: 100%;
-    max-height: calc(100vh - 230px);
+    max-width: 92%;
+    max-height: calc(100vh - 20px);
   }
   .signout-button {
     top: 5px;
@@ -51,7 +121,23 @@ body {
     font-size: 11px;
     border-radius: 6px;
     z-index: 100;
+    margin-right: 10px;
   }
+  .signout-button {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #dc2626, #ef4444);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
 }
 
 @media (max-width: 480px) {
@@ -81,7 +167,7 @@ body {
     top: 10px; /* Feljebb, hogy ne lógjon a listába */
     right: 10px;
     padding: 5px 10px;
-    font-size: 10px;
+    font-size: 8px;
     border-radius: 4px;
     z-index: 100;
     position: fixed; /* Rögzítve a képernyő tetejére */
@@ -90,15 +176,20 @@ body {
     max-height: 150px;
     padding-top: 40px; /* Hely a gombnak */
     margin-top: 0; /* Eltávolítjuk a felesleges margót */
+    max-width: 89%;
   }
   .chat-container {
     max-height: calc(100vh - 200px);
     padding: 8px; /* Kisebb padding */
+    max-width: 95%;
   }
   .user-list h2,
   .chat-container h2 {
     font-size: 15px; /* Kisebb címsor */
     margin-bottom: 5px;
+  }
+  .user-list h2{
+    padding-top: 20px;
   }
   .user-list li {
     font-size: 13px;
@@ -115,23 +206,24 @@ body {
     margin-top: 0; /* Eltávolítjuk a felesleges margót */
     padding-top: 10px; /* Kis tér a tartalomhoz */
   }
-}
-
-.signout-button {
+  .signout-button {
   position: absolute;
   top: 10px;
   right: 10px;
-  padding: 10px 20px;
+  padding: 10px 10px;
   background: linear-gradient(45deg, #dc2626, #ef4444);
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 12px;
   transition: background 0.2s;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 100;
 }
+}
+
+
 
 .signout-button:hover {
   background: linear-gradient(45deg, #b91c1c, #dc2626);
@@ -215,15 +307,7 @@ body {
   text-decoration: underline;
 }
 
-.user-list {
-  width: 300px;
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  overflow-y: auto;
-  position: relative;
-}
+
 
 .user-list h2 {
   margin-top: 0;
@@ -270,43 +354,8 @@ body {
   margin-left: 8px;
 }
 
-.chat-container {
-  flex: 1;
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  display: flex;
-  flex-direction: column;
-}
 
-.chat-container h2 {
-  margin-top: 0;
-  color: #1e40af;
-  font-weight: 600;
-  text-align: center;
-}
 
-.messages {
-  flex: 1;
-  overflow-y: auto;
-  max-height: 500px;
-  padding: 10px;
-  background: #f9fafb;
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-
-.message {
-  margin: 10px;
-  padding: 12px;
-  border-radius: 8px;
-  max-width: 70%;
-  position: relative;
-  word-wrap: break-word;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 0.3s ease-in;
-}
 
 @keyframes fadeIn {
   from {
