@@ -250,6 +250,7 @@ font-size: 13pt;
   flex-direction: column;
   gap: 15px;
   align-items: center;
+  justify-content: center;
 }
 
 .login-container input {
@@ -306,6 +307,7 @@ font-size: 13pt;
 .toggle-auth:hover {
   text-decoration: underline;
 }
+
 
 
 
@@ -429,4 +431,17 @@ font-size: 13pt;
 
 .message-form button:hover {
   background: linear-gradient(45deg, #1e3a8a, #2563eb);
+}
+.login-container .username-input {
+  width: 90%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.2s;
+}
+
+.login-container div {
+  width: 100%;
+
 }

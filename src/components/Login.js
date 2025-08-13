@@ -51,12 +51,11 @@ export default function Login({ setUser }) {
         {isSignUp && (
           <div>
             <label>Felhasználónév</label>
-<input
+          <input
   type="text"
   value={username}
   onChange={(e) => setUsername(e.target.value)}
   required
-  style={{ width: '90%' }}
 />
           </div>
         )}
