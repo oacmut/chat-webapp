@@ -34,11 +34,16 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
-    new CopyWebpackPlugin({
+new CopyWebpackPlugin({
   patterns: [
-    { from: 'public', to: '.' } // minden a public-ból a dist gyökerébe megy
+    {
+      from: 'public',
+      to: '.',
+      filter: (resourcePath) => !resourcePath.endsWith('index.html')
+    }
   ]
 }),
+
 
     new webpack.DefinePlugin({
       'process.env': {
