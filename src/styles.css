@@ -1,0 +1,383 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+  color: #1f2937;
+}
+
+.app {
+  max-width: 1280px;
+  margin: 20px auto; /* Margó fent és lent asztali nézetben */
+  padding: 10px;
+  min-height: calc(100vh - 40px);
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container {
+  display: flex;
+  gap: 15px;
+  flex: 1;
+  position: relative;
+  max-height: calc(100vh - 80px); /* Korlátozzuk a magasságot */
+}
+
+/* Reszponzív dizájn */
+@media (max-width: 768px) {
+  .app {
+    margin: 10px auto;
+    padding: 5px;
+  }
+  .main-container {
+    flex-direction: column;
+    gap: 10px;
+    max-height: calc(100vh - 20px);
+  }
+  .user-list {
+    width: 100%;
+    max-height: 180px;
+    margin-bottom: 10px;
+    padding-top: 50px; /* Több hely a gombnak */
+  }
+  .chat-container {
+    width: 100%;
+    max-height: calc(100vh - 230px);
+  }
+  .signout-button {
+    top: 5px;
+    right: 5px;
+    padding: 6px 12px;
+    font-size: 11px;
+    border-radius: 6px;
+    z-index: 100;
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    margin: 5px auto;
+    padding: 5px;
+  }
+  .login-container {
+    margin: 10px auto;
+    padding: 10px;
+    max-width: 95%;
+  }
+  .login-container input,
+  .login-container button {
+    font-size: 13px;
+    padding: 8px;
+  }
+  .message-form input,
+  .message-form button {
+    font-size: 13px;
+    padding: 6px;
+  }
+  .messages {
+    max-height: 300px;
+  }
+  .signout-button {
+    top: 10px; /* Feljebb, hogy ne lógjon a listába */
+    right: 10px;
+    padding: 5px 10px;
+    font-size: 10px;
+    border-radius: 4px;
+    z-index: 100;
+    position: fixed; /* Rögzítve a képernyő tetejére */
+  }
+  .user-list {
+    max-height: 150px;
+    padding-top: 40px; /* Hely a gombnak */
+    margin-top: 0; /* Eltávolítjuk a felesleges margót */
+  }
+  .chat-container {
+    max-height: calc(100vh - 200px);
+    padding: 8px; /* Kisebb padding */
+  }
+  .user-list h2,
+  .chat-container h2 {
+    font-size: 15px; /* Kisebb címsor */
+    margin-bottom: 5px;
+  }
+  .user-list li {
+    font-size: 13px;
+    padding: 6px;
+  }
+  .message {
+    font-size: 12px;
+    padding: 6px;
+  }
+  .message span {
+    font-size: 10px;
+  }
+  .user-list ul {
+    margin-top: 0; /* Eltávolítjuk a felesleges margót */
+    padding-top: 10px; /* Kis tér a tartalomhoz */
+  }
+}
+
+.signout-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #dc2626, #ef4444);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.signout-button:hover {
+  background: linear-gradient(45deg, #b91c1c, #dc2626);
+}
+
+.login-container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1e40af;
+  font-weight: 600;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.login-container input {
+  width: 90%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.2s;
+}
+
+.login-container input:focus {
+  border-color: #1e40af;
+  outline: none;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(45deg, #1e40af, #3b82f6);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-container button:hover {
+  background: linear-gradient(45deg, #1e3a8a, #2563eb);
+}
+
+.login-container .error {
+  color: #dc2626;
+  text-align: center;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.login-container .message {
+  color: #15803d;
+  text-align: center;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.toggle-auth {
+  color: #1e40af;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.toggle-auth:hover {
+  text-decoration: underline;
+}
+
+.user-list {
+  width: 300px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+  position: relative;
+}
+
+.user-list h2 {
+  margin-top: 0;
+  color: #1e40af;
+  font-weight: 600;
+  text-align: center;
+}
+
+.user-list ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 40px; /* Hely a kijelentkezés gombnak */
+}
+
+.user-list li {
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-list li:hover {
+  background: #f3f4f6;
+}
+
+.user-list .online {
+  color: #15803d;
+  font-weight: 500;
+}
+
+.user-list .offline {
+  color: #6b7280;
+}
+
+.unread-dot {
+  width: 10px;
+  height: 10px;
+  background: #dc2626;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+.chat-container {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-container h2 {
+  margin-top: 0;
+  color: #1e40af;
+  font-weight: 600;
+  text-align: center;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 500px;
+  padding: 10px;
+  background: #f9fafb;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.message {
+  margin: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  max-width: 70%;
+  position: relative;
+  word-wrap: break-word;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message.sent {
+  background: linear-gradient(45deg, #1e40af, #3b82f6);
+  color: white;
+  margin-left: auto;
+}
+
+.message.received {
+  background: linear-gradient(45deg, #e5e7eb, #d1d5db);
+  color: #1f2937;
+  margin-right: auto;
+}
+
+.message p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.message span {
+  font-size: 12px;
+  opacity: 0.7;
+  display: block;
+  margin-top: 5px;
+  text-align: right;
+}
+
+.message-form {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: #f3f4f6;
+  border-radius: 8px;
+}
+
+.message-form input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.message-form input:focus {
+  border-color: #1e40af;
+  outline: none;
+}
+
+.message-form button {
+  padding: 12px 20px;
+  background: linear-gradient(45deg, #1e40af, #3b82f6);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.message-form button:hover {
+  background: linear-gradient(45deg, #1e3a8a, #2563eb);
+}
